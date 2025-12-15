@@ -14,19 +14,8 @@ connectDb()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // first approach to connect mongodb
+
 // import mongoose from "mongoose";
 // import { DB_NAME } from "./constants.js";
 // import express from "express";
