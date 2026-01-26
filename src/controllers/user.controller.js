@@ -30,7 +30,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     }
 
     // check if user already exists
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{email}, {username}]
     })
     if(existedUser){
@@ -57,8 +57,8 @@ export const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         fullname,
         avatar: avatar.url,
-        coverImage: coverImage?.url,
-        username: username.toLowerCase(),
+        coverImage: coverImage?.url || "",
+        username: username.toLowerCase().trim(),
         email,
         password
     })
