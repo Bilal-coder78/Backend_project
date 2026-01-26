@@ -18,7 +18,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     // return response
 
     const { username, email, fullname, password } = req.body;
-    console.log("email :", email)
+    // console.log("email :", email)
 
     // validation
     if ([username, email, fullname, password].some((field) =>
@@ -36,10 +36,15 @@ export const registerUser = asyncHandler(async (req, res) => {
     if(existedUser){
         throw new ApiError(409, "User already exists with this email or username")
     }
-
+    // console.log(req.files)
     // check for avatar and coverImage
     const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
 
     if(!avatarLocalPath){
         throw new ApiError(400, "Avatar is required")
