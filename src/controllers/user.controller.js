@@ -22,7 +22,7 @@ const generateAccessAndRefreshToken = async (userid) => {
 
 }
 
-export const registerUser = asyncHandler(async (req, res) => {
+    const registerUser = asyncHandler(async (req, res) => {
     // Registration logic here
 
     // get user details from frontend
@@ -102,7 +102,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     )
 })
 
-export const loginUser = asyncHandler(async (req, res) => {
+    const loginUser = asyncHandler(async (req, res) => {
     // req body - data
     // email or username
     // find the user
@@ -157,3 +157,5 @@ export const loginUser = asyncHandler(async (req, res) => {
     )
 
 })
+
+export { registerUser, loginUser }
